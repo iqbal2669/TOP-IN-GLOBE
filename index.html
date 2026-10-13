@@ -1,0 +1,520 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOP IN GLOBE | Ice Creams & Desserts</title>
+
+<style>
+:root {
+  --red: #cf1725;
+  --pink: #f6b9e9;
+  --cream: #f5f1eb;
+  --ink: #40142b;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+}
+
+a { text-decoration: none; color: inherit; }
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 6%;
+  background: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--red);
+  letter-spacing: -1px;
+}
+
+.logo small {
+  display: block;
+  font-size: 9px;
+  color: var(--ink);
+  letter-spacing: 3px;
+  margin-top: 5px;
+}
+
+nav {
+  display: flex;
+  gap: 22px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+nav a:hover { color: var(--red); }
+
+.menu-btn {
+  display: none;
+  background: none;
+  border: 0;
+  font-size: 26px;
+  color: var(--red);
+  cursor: pointer;
+}
+
+.hero {
+  min-height: 540px;
+  padding: 70px 20px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: white;
+  background:
+    linear-gradient(#3b071477, #3b071466),
+    url("https://images.unsplash.com/photo-1464965911861-746a04b4bca6?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+}
+
+.hero-content { max-width: 750px; }
+
+.eyebrow {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 7vw, 86px);
+  line-height: .95;
+  letter-spacing: -4px;
+  margin: 22px 0;
+}
+
+.hero p {
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 28px;
+}
+
+.btn {
+  display: inline-block;
+  background: white;
+  color: var(--ink);
+  padding: 14px 24px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-red {
+  background: var(--red);
+  color: white;
+}
+
+.partners {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 35px 5%;
+  font-weight: 900;
+  font-size: 18px;
+  color: #245340;
+}
+
+.partners span:nth-child(2) { color: #d62838; }
+.partners span:nth-child(3) { color: #f18c22; }
+
+.section {
+  padding: 75px 6%;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: clamp(27px, 3.5vw, 40px);
+  letter-spacing: -1.5px;
+  margin: 0 0 15px;
+}
+
+.subtitle {
+  color: #806875;
+  max-width: 600px;
+  margin: 0 auto 35px;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.cream-bg { background: var(--cream); }
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  max-width: 1050px;
+  margin: 35px auto 0;
+}
+
+.product {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px #0000000b;
+  transition: transform .3s;
+}
+
+.product:hover { transform: translateY(-7px); }
+
+.product img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-info {
+  padding: 20px 10px;
+  font-weight: 800;
+}
+
+.product-info small {
+  display: block;
+  color: #907c87;
+  font-weight: normal;
+  margin-top: 8px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  max-width: 1050px;
+  margin: 30px auto 0;
+  background: var(--pink);
+  padding: 22px 10px;
+  border-radius: 18px;
+}
+
+.stat strong {
+  display: block;
+  font-size: clamp(25px, 4vw, 43px);
+}
+
+.stat span {
+  font-size: 11px;
+  font-weight: bold;
+}
+
+.stores {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+  align-items: center;
+  text-align: left;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.stores img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.locations {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.location {
+  background: var(--cream);
+  padding: 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.location small {
+  display: block;
+  margin-top: 8px;
+  color: #907c87;
+  font-weight: normal;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  max-width: 1100px;
+  margin: 35px auto 0;
+}
+
+.gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform .3s;
+}
+
+.gallery img:hover { transform: scale(1.03); }
+
+.social { background: var(--cream); }
+
+footer {
+  background: var(--red);
+  color: white;
+  padding: 45px 6%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 35px;
+  font-size: 12px;
+}
+
+footer .logo, footer .logo small { color: white; }
+
+footer p { line-height: 1.8; }
+
+footer a:not(.logo) {
+  display: block;
+  margin: 12px 0;
+}
+
+.copyright {
+  grid-column: 1 / -1;
+  border-top: 1px solid #ffffff55;
+  padding-top: 18px;
+  font-size: 11px;
+}
+
+@media (max-width: 700px) {
+  header { padding: 16px 5%; }
+
+  .menu-btn { display: block; }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 25px 6%;
+    background: white;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 10px 20px #00000012;
+  }
+
+  nav.open { display: flex; }
+
+  .hero { min-height: 460px; }
+  .hero h1 { letter-spacing: -2px; }
+
+  .section { padding: 55px 5%; }
+
+  .products { gap: 10px; }
+  .product img { height: 150px; }
+  .product-info { font-size: 12px; padding: 14px 5px; }
+  .product-info small { font-size: 10px; }
+
+  .stats { grid-template-columns: 1fr 1fr; gap: 22px; }
+
+  .stores {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .stores img { height: 250px; }
+
+  .gallery { grid-template-columns: 1fr 1fr; }
+  .gallery img { height: 170px; }
+
+  footer { grid-template-columns: 1fr 1fr; }
+  footer > div:first-child { grid-column: 1 / -1; }
+  .copyright { grid-column: 1 / -1; }
+}
+
+@media (max-width: 380px) {
+  .products { grid-template-columns: 1fr; }
+  .product img { height: 220px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#home" class="logo">
+    TOP IN GLOBE
+    <small>ICE CREAMS • DESSERTS</small>
+  </a>
+
+  <nav id="navigation">
+    <a href="#flavours">OUR FLAVOURS</a>
+    <a href="#stores">OUR STORES</a>
+    <a href="#story">OUR STORY</a>
+    <a href="#social">FOLLOW US</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+
+  <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+</header>
+
+<main id="home">
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">A little scoop of happiness</div>
+    <h1>Big Flavour.<br>Happy World.</h1>
+    <p>Discover delicious scoops, joyful moments and flavours made to bring everyone together.</p>
+    <a class="btn" href="#flavours">EXPLORE OUR FLAVOURS ↗</a>
+  </div>
+</section>
+
+<div class="partners">
+  <span>nkit</span>
+  <span>zomato</span>
+  <span>✦ SWIGGY</span>
+  <span>D-Mart</span>
+  <span>blinkit</span>
+</div>
+
+<section class="section cream-bg" id="flavours">
+  <h2>A World of Flavours,<br>Designed for Every Mood</h2>
+  <p class="subtitle">From timeless favourites to exciting new discoveries, find your perfect scoop.</p>
+
+  <div class="products">
+    <article class="product">
+      <img src="https://images.unsplash.com/photo-1560008581-09826d1de69e?auto=format&fit=crop&w=700&q=85" alt="Ice cream cup">
+      <div class="product-info">Classic Cup<small>Comfort in every spoon</small></div>
+    </article>
+
+    <article class="product">
+      <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=700&q=85" alt="Ice cream treat">
+      <div class="product-info">Fruit Pop<small>A refreshing little treat</small></div>
+    </article>
+
+    <article class="product">
+      <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=700&q=85" alt="Ice cream dessert">
+      <div class="product-info">Signature Scoops<small>Made for happy moments</small></div>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Loved Daily. Trusted By Millions.</h2>
+  <p class="subtitle">A growing community brought together by a love for ice cream.</p>
+
+  <div class="stats">
+    <div class="stat"><strong>20,000+</strong><span>Happy Customers</span></div>
+    <div class="stat"><strong>70+</strong><span>Flavour Choices</span></div>
+    <div class="stat"><strong>100+</strong><span>Ways to Enjoy</span></div>
+    <div class="stat"><strong>100%</strong><span>Made for Smiles</span></div>
+  </div>
+</section>
+
+<section class="section" id="stores">
+  <div class="stores">
+    <div>
+      <h2>50+ Stores<br>World Wide</h2>
+      <p class="subtitle">Find your favourite TOP IN GLOBE treat and make every day a little sweeter.</p>
+      <a href="#contact" class="btn btn-red">FIND A STORE ↗</a>
+    </div>
+    <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1000&q=85" alt="Shop interior">
+  </div>
+</section>
+
+<section class="section">
+  <h2>Our Exclusive Parlours</h2>
+  <p class="subtitle">A happy place for families, friends and every ice cream lover.</p>
+  <div class="locations">
+    <div class="location">Mumbai<small>Find your nearby scoop</small></div>
+    <div class="location">Pune<small>Find your nearby scoop</small></div>
+    <div class="location">Navi Mumbai<small>Find your nearby scoop</small></div>
+    <div class="location">More Locations<small>Coming to more places</small></div>
+  </div>
+</section>
+
+<section class="section cream-bg" id="story">
+  <h2>Scoops That Carry a Legacy</h2>
+  <p class="subtitle">Our love for flavour brings people together. Every scoop is a little celebration — crafted with care, shared with joy, and remembered for generations.</p>
+  <a href="#contact" class="btn">OUR STORY ↗</a>
+</section>
+
+<section class="section">
+  <h2>Loved Daily.<br>Trusted by Millions.</h2>
+  <p class="subtitle">Real moments. Sweet memories. A whole lot of happiness.</p>
+
+  <div class="gallery">
+    <img src="https://images.unsplash.com/photo-1501446529957-6226bd447c46?auto=format&fit=crop&w=600&q=85" alt="Ice cream cone">
+    <img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?auto=format&fit=crop&w=600&q=85" alt="Ice cream">
+    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&q=85" alt="Frozen dessert">
+    <img src="https://images.unsplash.com/photo-1560008581-09826d1de69e?auto=format&fit=crop&w=600&q=85" alt="Ice cream cup">
+  </div>
+</section>
+
+<section class="section social" id="social">
+  <h2>Follow the fun @topinglobe</h2>
+  <p class="subtitle">Tag us in your sweetest moments.</p>
+  <a class="btn btn-red" href="https://www.instagram.com/" target="_blank" rel="noopener">FOLLOW ON INSTAGRAM ↗</a>
+</section>
+
+</main>
+
+<footer id="contact">
+  <div>
+    <a class="logo" href="#home">TOP IN GLOBE<small>ICE CREAMS • DESSERTS</small></a>
+    <p>Scoops that carry a legacy.<br>Created with love, shared with joy.</p>
+  </div>
+
+  <div>
+    <h3>EXPLORE</h3>
+    <a href="#flavours">Our Flavours</a>
+    <a href="#stores">Our Stores</a>
+    <a href="#story">Our Story</a>
+  </div>
+
+  <div>
+    <h3>GET IN TOUCH</h3>
+    <a href="mailto:hello@topinglobe.com">Email Us</a>
+    <a href="#social">Social Media</a>
+    <a href="#contact">Franchise Enquiries</a>
+  </div>
+
+  <div class="copyright">
+    © <span id="year"></span> TOP IN GLOBE. All rights reserved.
+  </div>
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navigation = document.getElementById("navigation");
+
+menuBtn.addEventListener("click", () => {
+  navigation.classList.toggle("open");
+  menuBtn.textContent = navigation.classList.contains("open") ? "✕" : "☰";
+});
+
+navigation.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navigation.classList.remove("open");
+    menuBtn.textContent = "☰";
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
